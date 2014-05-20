@@ -1,0 +1,18 @@
+LOCAL_PATH := $(call my-dir)
+ 
+include $(CLEAR_VARS)
+ 
+include ./jni/opencv/sdk/native/jni/OpenCV.mk
+LOCAL_CFLAGS += -I$(LOCAL_PATH)/boost/include/boost-1_53
+LOCAL_LDLIBS += -L$(LOCAL_PATH)/boost/lib/ -lboost_system -lboost_filesystem -lboost_regex -lboost_date_time
+
+LOCAL_CPPFLAGS += -fexceptions
+LOCAL_CPPFLAGS += -frtti
+ 
+ 
+LOCAL_MODULE := ndk1
+LOCAL_SRC_FILES := wahet.cpp
+LOCAL_LDLIBS += -llog -ldl
+
+
+include $(BUILD_SHARED_LIBRARY)
